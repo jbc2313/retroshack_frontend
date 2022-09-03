@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useForm, Controller } from 'react-hook-form'
+import { InputText } from 'primereact/inputtext'
 import styles from '../styles/Navbar.module.css'
 
+//prime css
+import 'primeicons/primeicons.css';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import 'primereact/resources/primereact.css';
+import 'primeflex/primeflex.css';
+
 const Navbar = () => {
+  const [searchValue, setSearchValue] = useState(null)
+
+
+
   return (
     <div className={styles.navDiv}>
       <div className={styles.logoDiv}>
@@ -10,7 +22,12 @@ const Navbar = () => {
         </p>
       </div>
       <div className={styles.searchbarDiv}>
-        <input type='text' onSubmit={(e)=> console.log('you submited the search bar in the nav')}/>
+        <form>
+          <span className="p-input-icon-left">
+              <i className="pi pi-search" />
+              <InputText value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search" />
+          </span>
+        </form>
       </div>
       <div className={styles.linksDiv}>
         <ul>

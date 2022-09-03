@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-       
+       <h1>Hello Retro Computing Fans!</h1>
       </main>
 
     </div>
