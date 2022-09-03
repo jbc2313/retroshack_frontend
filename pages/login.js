@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
+import UserContext from '../util/UserContext'
 import { useForm, Controller } from 'react-hook-form'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import { Password } from 'primereact/password'
 import { Dialog } from 'primereact/dialog'
-import { Divider } from 'primereact/divider'
 import { classNames } from 'primereact/utils'
+import styles from '../styles/Login.module.css'
 
 //CSS from primeREACT
 import 'primeicons/primeicons.css';
@@ -13,12 +14,11 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 
-import styles from '../styles/Login.module.css'
 
 
 
 const Login = () => {
-
+  const { user, setUser } = useContext(UserContext)
   const [showMessage, setShowMessage] = useState(false)
   const [formData, setFormData] = useState({})
   const defaultValues = {
@@ -32,6 +32,8 @@ const Login = () => {
     setFormData(data);
     setShowMessage(true);
     reset();
+    // This is just for setup and to have a user object while building needs to be fixed later
+    setUser(data)
   }
 
   const getFormErrorMessage = (name) => {
