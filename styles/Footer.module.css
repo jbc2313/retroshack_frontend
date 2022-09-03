@@ -1,0 +1,19 @@
+.copywrite {
+}
+
+.footerDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoDiv ul {
+  list-style: none;
+  display: flex;
+  margin-bottom: 30px;
+
+}
+
+.infoDiv ul li {
+  margin-left: 20px;
+  margin-right: 30px;
+}

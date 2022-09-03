@@ -1,0 +1,39 @@
+.navDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoDiv {
+
+}
+
+.logo {
+  margin-left: 30px;
+}
+
+.searchbarDiv {
+ margin-top: 15px;
+}
+
+.searchbar {
+
+}
+
+.linksDiv {
+  
+}
+
+.linksDiv ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  margin-right: 50px;
+}
+
+.link1 {
+
+}
+
+.link2 {
+  margin-left: 40px;
+}
