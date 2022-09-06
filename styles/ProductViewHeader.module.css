@@ -1,0 +1,31 @@
+.HeaderDiv {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.HeaderDiv .imgDiv {
+  width: 300px;
+  height: 400px;
+  border: solid black 10px;
+  border-radius: 16px;
+  margin-left: 20px;
+}
+
+.HeaderDiv .imgDiv img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.TitleDiv {
+  align-self: flex-start;
+}
+
+.TitleDiv h3 {
+  font-size: xx-large;
+}
+
+.ActionDiv {
+  margin-right: 20px;
+}
