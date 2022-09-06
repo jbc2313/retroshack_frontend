@@ -3,6 +3,7 @@ import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { Rating } from 'primereact/rating';
+import Link from 'next/link';
 
 
 //reactprime css
@@ -72,8 +73,16 @@ const ProductsDataView = ({ products }) => {
                     <span className={`product-badge status-${data.stockStatus.toLowerCase()}`}>{data.stockStatus}</span>
                 </div>
                 <div className="product-grid-item-content">
-                <img src={data.image} height={250} width={250} alt={data.name} />
-                    <div className="product-name">{data.name}</div>
+                <Link href={`/products/${data.id}`} >
+                  <a>
+                    <img src={data.image} height={250} width={250} alt={data.name} />
+                  </a>
+                </Link>
+                    <Link href={`/products/${data.id}`} style={{cursor: 'pointer'}} >
+                      <a>
+                        <div className="product-name">{data.name}</div>
+                      </a>
+                    </Link>
                     <div className="product-description">{data.description}</div>
                     <Rating value={data.rating} readOnly cancel={false}></Rating>
                 </div>

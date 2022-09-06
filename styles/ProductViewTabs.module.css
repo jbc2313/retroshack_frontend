@@ -1,0 +1,24 @@
+.TabDiv {
+  width: 80%;
+  margin: auto;
+  border: solid white 5px;
+  border-radius: 16px;
+}
+
+.ratingDiv {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.commentsDiv {
+
+}
+
+.commentsInfo {
+ display: flex;
+ justify-content: space-around;
+}
+
+.commentsBody {
+  text-align: center;
+}

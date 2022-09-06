@@ -10,19 +10,16 @@ const ShowProduct = ({ product }) => {
   console.log(product)
 
   return (
-    <div>
+    <div style={{height: '100vh'}}>
       <Head>
         <title>Product# </title>
       </Head>
       <div>
         <div className='headerDiv'>
           <ProductViewHeader product={product}/>
-        </div>
+        </div><br/><br/>
         <div className='tabsDiv'>
-          <p>
-            The Tabs div is here
-          </p>
-          <ProductViewTab />
+          <ProductViewTab product={product}/>
         </div>
 
       </div>
