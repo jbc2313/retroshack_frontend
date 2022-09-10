@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { InputText } from 'primereact/inputtext'
 import styles from '../styles/Navbar.module.css'
 import Link from 'next/link'
-import UserContext from '../util/UserContext'
+import { useSession } from 'next-auth/react'
 
 //prime css
 import 'primeicons/primeicons.css';
@@ -13,8 +13,7 @@ import 'primeflex/primeflex.css';
 
 const Navbar = () => {
   const [searchValue, setSearchValue] = useState(undefined)
-  const { user } = useContext(UserContext)
-
+  const { data: session } = useSession()
 
 
   return (
@@ -37,7 +36,7 @@ const Navbar = () => {
       <div className={styles.linksDiv}>
         <ul>
           <li className={styles.link1}><Link href='/products'>Products</Link></li>
-          <li className={styles.link2}><Link href='/login'>{user ? `Hello, ${user.email}` : "Sign In" }</Link></li>
+          <li className={styles.link2}><Link href='/signin'>{session ? `Hello, ${session.user.email}` : "Sign In" }</Link></li>
           <li className={styles.link3}>Cart</li>
         </ul>
       </div>

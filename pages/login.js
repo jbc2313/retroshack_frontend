@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import Link from 'next/link'
 import UserContext from '../util/UserContext'
 import { useForm, Controller } from 'react-hook-form'
 import { InputText } from 'primereact/inputtext'
@@ -45,6 +46,16 @@ const Login = () => {
 
   return (
     <div className={styles.mainDiv} >
+      <div>
+
+        <h1>DO NOT USE THIS PAGE, THIS IS FOR TESTING ONLY</h1>
+        <h1>IF YOU SOMEHOW ENDED UP HERE CLICK THIS LINK BELOW TO REDIRECT</h1>
+        <button style={{width: '200px', marginLeft: '20%'}}><Link href='/signin'>SignIn Page!</Link></button>
+        <span>------CLICK HERE</span>
+      </div>
+
+
+
       <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
                 <div className="flex justify-content-center flex-column pt-6 px-3">
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }}></i>

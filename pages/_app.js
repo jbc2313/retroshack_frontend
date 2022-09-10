@@ -2,20 +2,20 @@ import { useState } from 'react'
 import '../styles/globals.css'
 import '../styles/ProductDataView.css'
 import Layout from '../components/Layout'
-import UserContext from '../util/UserContext'
+import { SessionProvider } from 'next-auth/react'
 
-function MyApp({ Component, pageProps }) {
-  const [user, setUser] = useState(undefined)
-
-  //user object needs to be saved in a cookie or localstorage inside a jwt or cookie 
+function MyApp({ 
+    Component,
+    pageProps: { session, ...pageProps }, 
+  }) {
 
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <SessionProvider session={session}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </UserContext.Provider>
+    </SessionProvider>
     )
 }
 
