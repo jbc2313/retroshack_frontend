@@ -1,0 +1,14 @@
+.MainDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center ;
+}
+
+
+.SigninDiv {
+  margin: 25px;
+}
+
+.SignupDiv {
+  margin: 25px;
+}

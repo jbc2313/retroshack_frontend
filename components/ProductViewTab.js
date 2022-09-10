@@ -3,7 +3,21 @@ import { TabView, TabPanel } from 'primereact/tabview';
 import { Rating } from 'primereact/rating';
 import styles from '../styles/ProductViewTabs.module.css';
 
+import Link from 'next/link';
+import axios from 'axios';
+
 const ProductViewTab = ({ product }) => {
+
+
+
+  // Admin Testing Links Will be removed 
+    const deleteItem = () => {
+      axios.delete('http://localhost:7777/products/:id')
+    }
+
+
+
+
 
 
 
@@ -95,6 +109,18 @@ const ProductViewTab = ({ product }) => {
           </TabPanel>
           <TabPanel header="Q and A">
               Q AND A
+          </TabPanel>
+          <TabPanel header="Testing Links">
+            <div>
+              <button>
+                <Link href='/products/update'>
+                Update Item
+                </Link>
+              </button><br /><br/>
+              <button>
+                Delete Item
+              </button>
+            </div>
           </TabPanel>
       </TabView>
     </div>

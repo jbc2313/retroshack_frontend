@@ -2,20 +2,22 @@ import React from 'react'
 import axios from 'axios'
 
 
-const index = () => {
+const Index = () => {
+
+
+
+
   return (
-    <div>index</div>
+    <div>
+
+      Admin Page
+      This will be guared by auth
+
+    </div>
+
+
   )
-
-export async function getServerSideProps(context) {
-
-  //const adminData = axios.get("http://localhost:7777/")
-
-
-  return {
-    props: {
-      userData: userData
-    }
-
-  }
 }
+
+
+export default Index

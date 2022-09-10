@@ -5,9 +5,10 @@ import { Button } from 'primereact/button';
 import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
 import styles from '../styles/ProductNew.module.css';
+import axios from 'axios';
 
 
-const ProductForm = () => {
+const ProductForm = ({ formType }) => {
   
   const [formData, setFormData] = useState()
 
@@ -30,6 +31,15 @@ const ProductForm = () => {
 
   const onSubmit = (data) => {
     setFormData(data);
+    
+    
+    if(formType === 'New') {
+      axios.post('http://localhost:7777/products/new')
+    }
+
+    if(formType === 'Update') {
+      axios.put('http://localhost:7777/products/:id')
+    }
     
 
     reset({values: defaultValues})

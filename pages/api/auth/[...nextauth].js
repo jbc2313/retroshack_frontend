@@ -14,7 +14,7 @@ export const authOptions = {
     CredentialsProvider({
       name: 'RetroShack Login',
       credentials: {
-        username: { label: "Username", type: "text",},
+        email: { label: "Email", type: "text"},
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {

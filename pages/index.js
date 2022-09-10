@@ -13,6 +13,7 @@ export default function Home() {
 
       <main className={styles.main}>
        <h1>Hello Retro Computing Fans!</h1>
+       {/*  add carosel component */}
       </main>
 
     </div>

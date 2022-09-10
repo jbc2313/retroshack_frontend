@@ -8,7 +8,7 @@ import styles from '../../styles/ProductNew.module.css'
 const New = () => {
   return (
     <div className={styles.formDiv}>
-      <ProductForm />
+      <ProductForm formType={'New'}/>
 
 
     </div>

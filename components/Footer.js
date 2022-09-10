@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from '../styles/Footer.module.css'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
@@ -10,6 +11,13 @@ const Footer = () => {
         </p>
       </div>
       <div className={styles.infoDiv}>
+        <ul>
+          <li>
+           <Link href='/products/new'>
+           New product ... testing route only
+           </Link> 
+          </li>
+        </ul>
         <ul>
           <li>About</li>
           <li>Contact</li>
