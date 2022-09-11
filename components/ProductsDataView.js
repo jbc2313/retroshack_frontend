@@ -4,7 +4,8 @@ import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { Rating } from 'primereact/rating';
 import Link from 'next/link';
-
+import { useSession } from 'next-auth/react';
+import { useCartStore } from '../util/CartStore';
 
 //reactprime css
 import 'primeicons/primeicons.css';
@@ -14,6 +15,8 @@ import 'primeflex/primeflex.css';
 
 const ProductsDataView = ({ products }) => {
   console.log(products)
+
+  const { data: session } = useSession()
 
   const [layout, setLayout] = useState('grid')
   const [sortKey, setSortKey] = useState(null)
@@ -39,6 +42,24 @@ const ProductsDataView = ({ products }) => {
     }
   }
 
+  const { addProduct } = useCartStore()
+
+  const handleAddCart = (prod) => {
+    // havent decided what to do about the cart and user being logged in or logged out
+    // I will figure this out after Mvp is finished
+    
+    if(session) {
+      console.log(prod)
+      addProduct(prod)
+    } else {
+      
+    }
+
+
+  }
+
+
+
   const renderListItem = (data) => {
     return (
       <div className='col-12'>
@@ -52,7 +73,7 @@ const ProductsDataView = ({ products }) => {
           </div>
           <div className='product-list-action'>
             <span className='product-price'>${data.price}</span>
-            <Button icon='pi pi-shopping-cart' label='Add to Cart' disabled={data.stockStatus === 'OUTOFSTOCK'}></Button>
+            <Button onClick={() => handleAddCart(data)} icon='pi pi-shopping-cart' label='Add to Cart' disabled={data.stockStatus === 'OUTOFSTOCK'}></Button>
             <span className={`product-badge status-${data.stockStatus.toLowerCase()}`}>{data.stockStatus}</span>
           </div>
         </div>
@@ -69,7 +90,6 @@ const ProductsDataView = ({ products }) => {
                         <i className="pi pi-tag product-category-icon"></i>
                         <span className="product-category">{data.category}</span>
                     </div>
-                    {console.log(data)}
                     <span className={`product-badge status-${data.stockStatus.toLowerCase()}`}>{data.stockStatus}</span>
                 </div>
                 <div className="product-grid-item-content">
@@ -88,7 +108,7 @@ const ProductsDataView = ({ products }) => {
                 </div>
                 <div className="product-grid-item-bottom">
                     <span className="product-price">${data.price}</span>
-                    <Button icon="pi pi-shopping-cart" label="Add to Cart" disabled={data.stockStatus === 'OUTOFSTOCK'}></Button>
+                    <Button onClick={() => handleAddCart(data)} icon="pi pi-shopping-cart" label="Add to Cart" disabled={data.stockStatus === 'OUTOFSTOCK'}></Button>
                 </div>
             </div>
         </div>
