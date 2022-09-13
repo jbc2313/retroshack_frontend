@@ -4,7 +4,7 @@ import { Column } from 'primereact/column';
 import { useCartStore } from '../util/CartStore';
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
-
+import Link from 'next/link';
 
 
 
@@ -20,11 +20,25 @@ const CheckoutTable = () => {
     return formatCurrency(Data.price);
   } 
 
+
+  const leftToolbarLayout = () => {
+    return (
+      <>
+        <Button><Link href='/cart'>Edit Cart</Link></Button>
+      
+      
+      </>
+    )
+  }
+
+
   const rightToolbarLayout = () => {
     return (
       <>
         <p style={{marginRight: '10px'}}>Continue to payment method?</p>
-        <Button label='Accept' icon='pi pi-credit-card' className='p-button-info' />
+        <Link href='/checkout/payment'>
+          <Button label='Accept' icon='pi pi-credit-card' className='p-button-info'/>
+        </Link>
       </>
     )
   }
@@ -37,7 +51,7 @@ const CheckoutTable = () => {
       <Column field='price' body={priceColumnFormat} header='Price'></Column>
       <Column field='amountInCart' header='# in Cart'></Column>
     </DataTable>
-    <Toolbar right={rightToolbarLayout} ></Toolbar>
+    <Toolbar left={leftToolbarLayout}  right={rightToolbarLayout} ></Toolbar>
     </>
 
 

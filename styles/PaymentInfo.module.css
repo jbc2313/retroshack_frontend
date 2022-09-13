@@ -1,0 +1,4 @@
+.mainDiv {
+  display: flex;
+  justify-content: space-evenly;
+}
