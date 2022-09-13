@@ -23,7 +23,7 @@ export const useCartStore = create(persist((set) => ({
     if(prod.id === product.id) {
       return {
         ...prod,
-        amountInCart: amountInCart + 1
+        amountInCart: prod.amountInCart + 1
       }
     } else {
       return prod
@@ -33,11 +33,12 @@ export const useCartStore = create(persist((set) => ({
     if(prod.id === product.id) {
       return {
         ...prod,
-        amountInCart: amountInCart - 1
+        amountInCart: prod.amountInCart - 1
       }
     } else {
       return prod
     }
+
   })})) ,
   removeProduct: (product) => set((state) => ({ products: state.products.filter(prod => prod.id !== product.id)})),
   removeAllProducts: () => set({ products: [] }),
