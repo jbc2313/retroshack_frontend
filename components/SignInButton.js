@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSession, signIn, signOut } from 'next-auth/react'
-
+import { Button } from 'primereact/button'
 
 const SignInButton = () => {
   const { data: session } = useSession()
@@ -8,8 +8,7 @@ const SignInButton = () => {
   if(session) {
     return (
       <>
-        Signed in as {session.user.email} <br/>
-        <button onClick={() => signOut()} >Sign Out</button>
+        <Button onClick={() => signOut()} >Sign Out</Button>
       </>
     )
   }
