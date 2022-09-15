@@ -11,7 +11,7 @@ const index = ({ products }) => {
   return (
     <div>
       <h2>All Products</h2>
-      <ProductsDataView products={products.products} />
+      <ProductsDataView products={products} />
     </div>
   )
 }

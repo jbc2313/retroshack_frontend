@@ -3,6 +3,9 @@
 }
 
 .main {
+  width: 50%;
+  border: solid black 2px;
+  margin: auto;
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1;

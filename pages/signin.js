@@ -19,11 +19,18 @@ const Signin = () => {
       <div className={styles.SigninDiv}>
         <SignInButton />
       </div>
-      <div className={styles.SignupDiv}>
-        <Button>
-          <Link href='/signup'>Create Account</Link>
-        </Button>
-      </div>
+      {!session 
+        ?
+          <div className={styles.SignupDiv}>
+            <Button>
+              <Link href='/signup'>Create Account</Link>
+            </Button>
+          </div>
+        :
+          <div>
+            <h3>Your profile will go here.</h3>
+          </div>
+      }
 
 
 

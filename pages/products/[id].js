@@ -39,7 +39,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      product: product.product
+      product: product
     }
   }
 }

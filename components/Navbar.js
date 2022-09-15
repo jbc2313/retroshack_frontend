@@ -5,10 +5,12 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { useCartStore } from '../util/CartStore'
+import { useProductStore } from '../util/ProductStore'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { Divider } from 'primereact/divider'
+import SearchDropdown from './SearchDropdown'
 
 //prime css
 import 'primeicons/primeicons.css';
@@ -17,11 +19,13 @@ import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 
 const Navbar = () => {
-  const [searchValue, setSearchValue] = useState(undefined)
+  const [searchValue, setSearchValue] = useState('')
+  const [isSearchShowing, setIsSearchShowing] = useState(false)
   const { data: session } = useSession()
   const op = useRef(null);
-  const products = useCartStore((state) => state.products)
-  console.log(products)
+  const searchPanel = useRef(null);
+  const cartProducts = useCartStore((state) => state.products)
+  
 
 
   const imageBody = (rowData) => {
@@ -36,7 +40,16 @@ const Navbar = () => {
     return value.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
   }
 
+  const { products, getProducts } = useProductStore();
 
+  const searchForItem = () => {
+    getProducts()
+
+  }
+  const displaySearch = () => {
+    setIsSearchShowing(true)
+  }
+  
 
 
   return (
@@ -49,12 +62,25 @@ const Navbar = () => {
         </p>
       </div>
       <div className={styles.searchbarDiv}>
-        <form>
-          <span className="p-input-icon-left">
-              <i className="pi pi-search" />
-              <InputText value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search" />
-          </span>
-        </form>
+        <span className="p-input-icon-left">
+            <i className="pi pi-search" />
+            <InputText value={searchValue} 
+            onChange={(e) => {
+              setSearchValue(e.target.value)
+            }}
+            onFocus={(e) => {
+              searchPanel.current.show(e)
+              searchForItem()
+            }}
+            onKeyDown={() => displaySearch()}
+            onBlur={(e) => searchPanel.current.hide(e)}
+
+            placeholder="Search" 
+            />
+        </span>
+        <OverlayPanel ref={searchPanel}>
+          {isSearchShowing && <SearchDropdown searchValue={searchValue} />}
+        </OverlayPanel>
       </div>
       <div className={styles.linksDiv}>
         <ul>
@@ -64,7 +90,7 @@ const Navbar = () => {
         </ul>
         <div>
           <OverlayPanel ref={op}>
-            <DataTable value={products} size='small' selectionMode="single" responsiveLayout='scroll' >
+            <DataTable value={cartProducts} size='small' selectionMode="single" responsiveLayout='scroll' >
               <Column field="name" header="Name"  />
               <Column header="Image" body={imageBody} />
               <Column field="price" header="Price" body={priceBody} />

@@ -14,7 +14,7 @@ const ProductViewHeader = ({ product }) => {
       </div>
       <div className={styles.ActionDiv}>
         <h2>$ {product.price}</h2>
-        <span className={`product-badge status-${product.stockStatus.toLowerCase()}`}>{product.stockStatus}</span>
+        <span className={`product-badge status-${product?.stockStatus?.toLowerCase()}`}>{product.stockStatus}</span>
         <br/><br/>
         <Button className='p-button-raised'>Add To Cart</Button>
       </div>

@@ -12,7 +12,10 @@ const ProductViewTab = ({ product }) => {
 
   // Admin Testing Links Will be removed 
     const deleteItem = () => {
-      axios.delete('http://localhost:7777/products/:id')
+      axios.delete(`http://localhost:7777/products/${product.id}`)
+      .then(res => {
+        console.log(res.data)
+      })
     }
 
 
@@ -117,7 +120,7 @@ const ProductViewTab = ({ product }) => {
                 Update Item
                 </Link>
               </button><br /><br/>
-              <button>
+              <button onClick={deleteItem}>
                 Delete Item
               </button>
             </div>
