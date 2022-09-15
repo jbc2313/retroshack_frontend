@@ -64,9 +64,13 @@ const ProductsDataView = ({ products }) => {
     return (
       <div className='col-12'>
         <div className='product-list-item'>
-          <img src={data.image} alt={data.name}  />
+          <Link  href={`/products/${data.id}`}>
+            <img style={{cursor: 'pointer'}} src={data.image} alt={data.name} />
+          </Link>
           <div className='product-list-detail'>
-            <div className='product-name'>{data.name}</div>
+            <Link href={`/products/${data.id}`}>
+              <div style={{cursor: 'pointer'}} className='product-name'>{data.name}</div>
+            </Link>
             <div className='product-description'>{data.description}</div>
             <Rating value={data.rating} readOnly cancel={false}></Rating>
             <i className='pi pi-tag product-category-icon' ></i><span className='product-category'>{data.category}</span>
@@ -94,14 +98,10 @@ const ProductsDataView = ({ products }) => {
                 </div>
                 <div className="product-grid-item-content">
                 <Link href={`/products/${data.id}`} >
-                  <a>
-                    <img src={data.image} height={250} width={250} alt={data.name} />
-                  </a>
+                    <img style={{cursor: 'pointer'}} src={data.image} height={250} width={250} alt={data.name} />
                 </Link>
                     <Link href={`/products/${data.id}`} style={{cursor: 'pointer'}} >
-                      <a>
-                        <div className="product-name">{data.name}</div>
-                      </a>
+                      <div style={{cursor: 'pointer'}} className="product-name">{data.name}</div>
                     </Link>
                     <div className="product-description">{data.description}</div>
                     <Rating value={data.rating} readOnly cancel={false}></Rating>

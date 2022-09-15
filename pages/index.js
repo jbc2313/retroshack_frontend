@@ -5,6 +5,7 @@ import Carousel from '../components/Carousle'
 import axios from 'axios'
 
 export default function Home({ products }) {
+  //console.log(products)
   return (
     <div className={styles.container}>
       <Head>
@@ -15,7 +16,7 @@ export default function Home({ products }) {
 
       <main className={styles.main}>
         <h1>Hello Retro Computing Fans!</h1>
-        <Carousel products={products.products} />
+        <Carousel products={products} />
       </main>
 
     </div>
