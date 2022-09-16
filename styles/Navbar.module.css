@@ -42,3 +42,20 @@ align-self: center;
 .link3 {
   margin-left: 40px;
 }
+
+@media (max-width: 600px) {
+  .navDiv {
+    width: 600px;
+    height: 150px;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .logoDiv {
+    margin: 1px;
+  }
+  .searchbarDiv {
+    margin: 1px;
+  }
+}

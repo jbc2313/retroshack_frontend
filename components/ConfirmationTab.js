@@ -25,7 +25,7 @@ const ConfirmationTab = ({ paymentInfo }) => {
     <div className={styles.mainDiv}>
       <div className={styles.cardDiv}>
 
-        <Card title="Order Confirmation" footer={footer}>
+        <Card className={styles.cardEl} title="Order Confirmation" footer={footer}>
           <p>
             You are about to purchase {products.length} items with card number ending in {cardEnd}. If this looks correct please continue.
           </p>

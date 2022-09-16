@@ -22,3 +22,18 @@
 .commentsBody {
   text-align: center;
 }
+
+@media (max-width: 600px) {
+  .TabDiv {
+    width: 400px;
+    margin-left: 30%;
+    margin-bottom: 100px;
+  }
+  .imgDiv {
+    width: 500px;
+  }
+  .img {
+    width: 100px;
+  }
+
+}

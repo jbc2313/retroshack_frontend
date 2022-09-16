@@ -1,9 +1,10 @@
 import React from 'react'
 import CartTable from '../components/CartTable'
+import styles from '../styles/Cart.module.css'
 
 const Cart = () => {
   return (
-    <div style={{margin: '25px'}}>
+    <div className={styles.mainDiv}>
       <h1>Your Cart!</h1>
       <CartTable />
     </div>

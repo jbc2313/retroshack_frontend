@@ -12,7 +12,7 @@ console.log(products);
 
 const carouselTemplate = (product) => {
  return(
-     <div className='product'>
+     <div style={{ backgroundColor: "#eaeaea", borderRadius: '15px'}} className='product'>
         <div className='product-content'>
             <div className='mb-3' style={{display: 'flex', justifyContent: 'center'}}>
                 <img style={{objectFit: 'contain', height: '200px', width: '200px'}} alt={'product'} src={product.image} />
@@ -36,8 +36,8 @@ const carouselTemplate = (product) => {
 
 return (
     <div style={{width: '80%'}}>
-        <h2 style={{textAlign: 'center'}}>Checkout out these popular products!!</h2>
-        <Carousel value={products} circular numVisible={2} numScroll={2} header={<h3 style={{textAlign: 'center'}}>Popular Items</h3>} itemTemplate={carouselTemplate} />
+        <h2 style={{textAlign: 'center', marginBottom: '80px'}}>Checkout out these popular products!!</h2>
+        <Carousel value={products} circular numVisible={1} numScroll={1} header={<h3 style={{textAlign: 'center'}}>Popular Items</h3>} itemTemplate={carouselTemplate} />
     </div>
 
 )

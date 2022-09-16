@@ -16,7 +16,7 @@ const SignInButton = () => {
   return (
     <>
       Not signed in <br />
-      <button onClick={() => signIn()} >Sign In</button>
+      <Button onClick={() => signIn()} >Sign In</Button>
     </>
   )
 }

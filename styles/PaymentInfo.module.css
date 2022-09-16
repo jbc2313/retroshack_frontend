@@ -2,3 +2,19 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+
+
+@media (max-width: 600px) {
+  .mainDiv {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 30%;
+  }
+  .mainDiv input {
+    margin-right: 200px;
+  }
+
+
+}

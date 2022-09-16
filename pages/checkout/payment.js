@@ -6,6 +6,7 @@ import { Accordion, AccordionTab } from 'primereact/accordion';
 import { useCartStore } from '../../util/CartStore';
 import CheckoutTable from '../../components/CheckoutTable';
 import ConfirmationTab from '../../components/ConfirmationTab';
+import styles from '../../styles/PaymentInfo.module.css';
 
 
 const payment = () => {
@@ -39,7 +40,7 @@ const payment = () => {
 
 
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <Accordion activeIndex={activeTab} onTabChange={(e) => setActiveTab(e.index)}>
         <AccordionTab header='Cart'>
           <DataTable value={products} responsiveLayout='scroll' >

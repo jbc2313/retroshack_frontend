@@ -29,9 +29,9 @@ const PaymentInput = ({ setInputComplete, setPaymentInfo }) => {
 
   return (
     <div className={styles.mainDiv}>
-      <InputMask mask='9999-9999-9999-9999' value={CardMainValue} onChange={(e) => setCardMainValue(e.value)} onComplete={() => setCardMainComplete(true)} placeholder='Card Number' onBlur={cardInputComplete} />
-      <InputMask mask='99/99' size={15} placeholder='Exp Date' onChange={(e) => setCardDateValue(e.value)} onComplete={() => setCardDateComplete(true)} onBlur={cardInputComplete} />
-      <InputMask mask='999' size={10} placeholder='CVV' onChange={(e) => setCardCVVValue(e.value)} onComplete={() => setCardCVVComplete(true)} onBlur={cardInputComplete} />
+      <InputMask className={styles.input} mask='9999-9999-9999-9999' value={CardMainValue} onChange={(e) => setCardMainValue(e.value)} onComplete={() => setCardMainComplete(true)} placeholder='Card Number' onBlur={cardInputComplete} />
+      <InputMask className={styles.input} mask='99/99' size={15} placeholder='Exp Date' onChange={(e) => setCardDateValue(e.value)} onComplete={() => setCardDateComplete(true)} onBlur={cardInputComplete} />
+      <InputMask className={styles.input} mask='999' size={10} placeholder='CVV' onChange={(e) => setCardCVVValue(e.value)} onComplete={() => setCardCVVComplete(true)} onBlur={cardInputComplete} />
     </div>
   )
 }

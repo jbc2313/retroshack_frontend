@@ -4,6 +4,7 @@ import styles from '../styles/SignIn.module.css'
 import Link from 'next/link'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { Button } from 'primereact/button'
+import Profile from '../components/Profile'
 
 const Signin = () => {
  
@@ -29,6 +30,7 @@ const Signin = () => {
         :
           <div>
             <h3>Your profile will go here.</h3>
+            <Profile session={session} />
           </div>
       }
 

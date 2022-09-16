@@ -4,4 +4,12 @@
 
 .pageDiv h2 {
   text-align: center;
+} 
+
+@media (max-width: 600px) {
+  .pageDiv {
+    width: 400px;
+    height: 100%;
+    margin: 80px;
+  }
 }

@@ -6,3 +6,17 @@
 .cardDiv {
   width: 50vw;
 }
+
+
+@media (max-width: 600px) {
+  .mainDiv {
+    width: 400px;
+    margin: 10%;
+  }
+
+  .cardEl {
+    margin: 0;
+  }
+
+
+}

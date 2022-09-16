@@ -33,3 +33,23 @@
 .ActionDiv {
   margin-right: 20px;
 }
+
+@media (max-width: 600px) {
+  .HeaderDiv {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 30%;
+  }
+  .TitleDiv {
+    text-align: center;
+    margin-left: 20%
+  }
+  .imgDiv {
+    width: 500px;
+  }
+  .img {
+    width: 100px;
+  }
+
+}

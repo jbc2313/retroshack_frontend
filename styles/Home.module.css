@@ -3,8 +3,13 @@
 }
 
 .main {
+  background-color: black;
+  color: white;
   width: 50%;
-  border: solid black 2px;
+  border-left: solid black 8px;
+  border-right: solid black 8px;
+  border-top: solid #eaeaea 2px;
+  border-bottom: solid #eaeaea 2px;
   margin: auto;
   min-height: 100vh;
   padding: 4rem 0;
@@ -115,6 +120,14 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    width: 500px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
