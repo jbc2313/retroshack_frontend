@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import React, { useState, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button'; 
 import { Divider } from 'primereact/divider';
+import { Toast } from 'primereact/toast'
 import { classNames } from 'primereact/utils';
+import { Dropdown } from 'primereact/dropdown';
 import styles from '../styles/ProductNew.module.css';
 import axios from 'axios';
 
 
-const ProductForm = ({ formType }) => {
+const ProductForm = ({ formType, products }) => {
   
-  const [formData, setFormData] = useState()
-
-  const defaultValues = {
+  let defaultValues = {
     sku: '',
     name: '',
     description: '',
@@ -24,122 +23,145 @@ const ProductForm = ({ formType }) => {
     rating: ''
 
   }
+  const [formData, setFormData] = useState(defaultValues)
+  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [dropdownProduct, setDropdownProduct] = useState({})
 
+  const handleFormChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value})
+  }
 
+  const handleChange = (e) => {
+    //console.log(e.value)
+    if(e.target.value === undefined) {
+      setSelectedProduct('reset');
+      setDropdownProduct(undefined)
+      return
+    }
+    const xProduct = products.find((prod) => prod.id === e.value)
+   // console.log(xProduct)
+    setSelectedProduct(xProduct);
+    setDropdownProduct(e.value)
+  }
 
-  const { control, formState: { errors }, handleSubmit, reset } = useForm({ defaultValues })
+  useEffect(() => {
+    if(selectedProduct === 'reset'){
+      setFormData(defaultValues)
+      return
+    }
+    if(selectedProduct !== null) {
+      console.log('form change EFFECT')
+      setFormData(selectedProduct)
+    }
+      //console.log('this is the default values now', defaultValues)
 
-  const onSubmit = (data) => {
-    setFormData(data);
-    
+  }, [selectedProduct])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
     
     if(formType === 'New') {
-      axios.post('http://localhost:7777/products/new')
+      axios.post('http://localhost:7777/products/new', formData)
+      .then(resp => console.log(resp))
     }
 
     if(formType === 'Update') {
-      axios.put('http://localhost:7777/products/:id')
+      axios.patch('http://localhost:7777/products/:id', formData )
+      .then(res => console.log(res))
     }
     
-
-    reset({values: defaultValues})
   }
 
-  // need to add error message function here and add into form
   
   return (
     <div className={styles.formDiv}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='field'>
-          <span className='p-float-label'>
-            <Controller name='sku' control={control} rules={{ required: 'SKU is required.' }} render={({ field, fieldState }) => (
-              <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid})} />
-            )} />
-            <label htmlFor='sku' className={classNames({ 'p-error': errors.sku})} >SKU</label>
-          </span>
-        </div>
-        {/* name input */}
-        <div className='field'>
-          <span className='p-float-label'>
-            <Controller name='name' control={control} rules={{ required: 'Name is required.' }} render={({ field, fieldState }) => (
-              <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid})} />
-            )} />
-            <label htmlFor='name' className={classNames({ 'p-error': errors.name})} >Name</label>
-          </span>
-        </div>
-        {/* description input */}
-        <div className='field'>
-          <span className='p-float-label'>
-            <Controller name='description' control={control} rules={{ required: 'Description is required.' }} render={({ field, fieldState }) => (
-              <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid})} />
-            )} />
-            <label htmlFor='description' >Description</label>
-          </span>
-        </div>
-        {/* image input */}
-        <div className='field'>
-          <span className='p-float-label'>
-            <Controller name='image' control={control} rules={{ required: 'SKU is required.' }} render={({ field, fieldState }) => (
-              <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid})} />
-            )} />
-            <label htmlFor='image' >Image</label>
-          </span>
-        </div>
-        {/* price input */}
-        <div className='field'>
-          <span className='p-float-label'>
-            <Controller name='price' control={control} rules={{ required: 'SKU is required.' }} render={({ field, fieldState }) => (
-              <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid})} />
-            )} />
-            <label htmlFor='price' >Price</label>
-          </span>
-        </div>
-        {/* catgegory input */}
-        <div className='field'>
-          <span className='p-float-label'>
-            <Controller name='category' control={control} rules={{ required: 'SKU is required.' }} render={({ field, fieldState }) => (
-              <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid})} />
-            )} />
-            <label htmlFor='category' >Category</label>
-          </span>
-        </div>
-        {/* quantity input */}
-        <div className='field'>
-          <span className='p-float-label'>
-            <Controller name='quantity' control={control} rules={{ required: 'SKU is required.' }} render={({ field, fieldState }) => (
-              <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid})} />
-            )} />
-            <label htmlFor='quantity'>Quantity</label>
-          </span>
-        </div>
-        {/* stock staus input */}
-        <div className='field'>
-          <span className='p-float-label'>
-            <Controller name='stockStatus' control={control} rules={{ required: 'SKU is required.' }} render={({ field, fieldState }) => (
-              <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid})} />
-            )} />
-            <label htmlFor='stockStatus'>Stock Status</label>
-          </span>
-        </div>
-        {/* review input */}
-        <div className='field'>
-          <span className='p-float-label'>
-            <Controller name='Rating' control={control} rules={{ required: 'SKU is required.' }} render={({ field, fieldState }) => (
-              <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid})} />
-            )} />
-            <label htmlFor='Rating' >Rating</label>
-          </span>
-        </div>
-        <Button type='submit' label='Submit' className='mt-2' />
-
-
+      <div className={styles.productSelector}>
+        {formType === 'Update' && <>
+          <h3>Select Product to Update</h3>
+          <Dropdown showClear value={dropdownProduct} options={products} onChange={handleChange} optionLabel='name' optionValue='id' placeholder='Select a product' />
+        </>}
+      </div>
+      <form className={styles.formActual} onSubmit={handleSubmit}>
+        <span className='p-float-label'>
+          <InputText id='sku' name='sku'
+            required
+            value={formData?.sku}
+            onChange={handleFormChange}
+          />
+          <label htmlFor='sku'>SKU</label>
+        </span>
+        <span className='p-float-label'>
+          <InputText name='name'
+            required
+            value={formData?.name}
+            onChange={handleFormChange}
+          />
+          <label htmlFor='name'>Name</label>
+        </span>
+        <span className='p-float-label'>
+          <InputText name='description'
+            required
+            value={formData?.description}
+            onChange={handleFormChange}
+          />
+          <label htmlFor='description'>Description</label>
+        </span>
+        <span className='p-float-label'>
+          <InputText name='image'
+            required
+            value={formData?.image}
+            onChange={handleFormChange}
+          />
+          <label htmlFor='image'>Image URL</label>
+        </span>
+        <span className='p-float-label'>
+          <InputText name='price'
+            required
+            value={formData?.price}
+            onChange={handleFormChange}
+          />
+          <label htmlFor='price'>Price</label>
+        </span>
+        <span className='p-float-label'>
+          <InputText name='category'
+            required
+            value={formData?.category}
+            onChange={handleFormChange}
+          />
+          <label htmlFor='category'>Category</label>
+        </span>
+        <span className='p-float-label'>
+          <InputText name='quantity'
+            required
+            value={formData?.quantity}
+            onChange={handleFormChange}
+          />
+          <label htmlFor='quantity'>Quantity</label>
+        </span>
+        <span className='p-float-label'>
+          <InputText name='stockStatus'
+            required
+            value={formData?.stockStatus}
+            onChange={handleFormChange}
+          />
+          <label htmlFor='stockStatus'>Stock Status</label>
+        </span>
+        <span className='p-float-label'>
+          <InputText name='rating'
+            required
+            value={formData?.rating}
+            onChange={handleFormChange}
+          />
+          <label htmlFor='rating'>Rating</label>
+        </span>
+        <Button type='submit' className='mt-2'>Submit</Button>
 
       </form>
-
-
 
     </div>
   )
 }
 
 export default ProductForm
+
+

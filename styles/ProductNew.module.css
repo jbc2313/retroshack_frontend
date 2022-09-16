@@ -2,4 +2,14 @@
   width: 50%;
   margin: auto;
   margin-top: 45px;
+  margin-bottom: 25px;
+}
+
+.formActual span {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.productSelector {
+  margin-bottom: 40px;
 }

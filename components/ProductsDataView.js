@@ -65,13 +65,13 @@ const ProductsDataView = ({ products }) => {
       <div className='col-12'>
         <div className='product-list-item'>
           <Link  href={`/products/${data.id}`}>
-            <img style={{cursor: 'pointer'}} src={data.image} alt={data.name} />
+            <img style={{cursor: 'pointer', objectFit: 'contain'}} src={data.image} alt={data.name} />
           </Link>
           <div className='product-list-detail'>
             <Link href={`/products/${data.id}`}>
               <div style={{cursor: 'pointer'}} className='product-name'>{data.name}</div>
             </Link>
-            <div className='product-description'>{data.description}</div>
+            {/* <div className='product-description'>{data.description}</div> */}
             <Rating value={data.rating} readOnly cancel={false}></Rating>
             <i className='pi pi-tag product-category-icon' ></i><span className='product-category'>{data.category}</span>
           </div>
@@ -98,13 +98,13 @@ const ProductsDataView = ({ products }) => {
                 </div>
                 <div className="product-grid-item-content">
                 <Link href={`/products/${data.id}`} >
-                    <img style={{cursor: 'pointer'}} src={data.image} height={250} width={250} alt={data.name} />
+                    <img style={{cursor: 'pointer', objectFit: 'contain'}} src={data.image} height={250} width={250} alt={data.name} />
                 </Link>
                     <Link href={`/products/${data.id}`} style={{cursor: 'pointer'}} >
                       <div style={{cursor: 'pointer'}} className="product-name">{data.name}</div>
                     </Link>
-                    <div className="product-description">{data.description}</div>
-                    <Rating value={data.rating} readOnly cancel={false}></Rating>
+                    {/* <div className="product-description">{data.description}</div> */}
+                    <Rating value={data.rating} readOnly cancel={false}></Rating><br/>
                 </div>
                 <div className="product-grid-item-bottom">
                     <span className="product-price">${data.price}</span>
@@ -145,7 +145,7 @@ const ProductsDataView = ({ products }) => {
     <div className='dataview'>
       <div className="card">
         <DataView value={products} layout={layout} header={header}
-          itemTemplate={itemTemplate} paginator rows={9}
+          itemTemplate={itemTemplate} paginator rows={5}
           sortOrder={sortOrder} sortField={sortField} />
       </div>
 
