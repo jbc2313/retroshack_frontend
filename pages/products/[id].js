@@ -33,7 +33,7 @@ export default ShowProduct
 
 export async function getServerSideProps(context) {
   const { id } = context.params
-  const { data } = await axios.get(`http://localhost:7777/products/${id}`)
+  const { data } = await axios.get(process.env.API_URL + `/products/${id}`)
   const product = await data
 
 

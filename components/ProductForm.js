@@ -61,12 +61,12 @@ const ProductForm = ({ formType, products }) => {
     e.preventDefault()
     
     if(formType === 'New') {
-      axios.post('http://localhost:7777/products/new', formData)
+      axios.post(process.env.NEXT_PUBLIC_API_URL + '/products/new', formData)
       .then(resp => console.log(resp))
     }
 
     if(formType === 'Update') {
-      axios.patch('http://localhost:7777/products/:id', formData )
+      axios.patch(process.env.NEXT_PUBLIC_API_URL + `/products/${selectedProduct.id}`, formData )
       .then(res => console.log(res))
     }
     

@@ -101,17 +101,6 @@ const Navbar = () => {
               <Link href='/checkout' ><Button>Checkout</Button></Link>
             </div>
 
-            {/*
-              this is an alternative cart overlay 
-            <div>
-              <p>Total Items: {products.length}</p>
-              <Divider />
-              <ul>
-                {products.map(prod => <li>{prod.name}</li>)}
-              </ul>
-              <Button><Link href='/cart'>Go To Cart</Link></Button>
-            </div> 
-            */}
           </OverlayPanel>
         </div>
       </div>

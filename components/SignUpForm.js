@@ -32,7 +32,7 @@ const SignUpForm = () => {
     console.log(data)
     setFormData(data);
 
-    axios.post('http://localhost:7777/signup', {
+    axios.post(process.env.NEXT_PUBLIC_API_URL + '/signup', {
       email: data.email,
       password: data.password
     })

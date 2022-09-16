@@ -21,7 +21,7 @@ const ReviewForm = ({ productId }) => {
         stars: inputStars,
         body: reviewBody
       }
-      axios.post('http://localhost:7777/products/review/new', {
+      axios.post(process.env.NEXT_PUBLIC_API_URL + '/products/review/new', {
         user: session.user.email,
         stars: reviewData.stars,
         body: reviewData.body,

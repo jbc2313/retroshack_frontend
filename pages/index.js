@@ -24,7 +24,7 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps(context) {
-  const { data } = await axios.get('http://localhost:7777/products')
+  const { data } = await axios.get(process.env.API_URL + '/products')
   const products = await data
 
 

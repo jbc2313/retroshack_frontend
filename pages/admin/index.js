@@ -13,7 +13,7 @@ const Index = ({ isAdmin, userInfo }) => {
 
 
   const deleteItem = () => {
-    axios.delete(`http://localhost:7777/products/${product.id}`)
+    axios.delete(process.env.API_URL + `/products/${product.id}`)
     .then(res => {
       console.log(res.data)
     })
@@ -56,7 +56,7 @@ export async function getServerSideProps(context) {
     const userData = {
       email: session.user.email
     }
-    const { data } = await axios.post('http://localhost:7777/find/user', userData)
+    const { data } = await axios.post(process.env.API_URL +'/find/user', userData)
     const userInfo = await data
     if(userInfo.isAdmin === false) {
       return {

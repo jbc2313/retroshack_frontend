@@ -1,7 +1,6 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import CredentialsProvider from "next-auth/providers/credentials"
-import { backendAuthSignIn, backendAuthSignUp } from "../../../util/backendAuth"
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -21,7 +20,7 @@ export const authOptions = {
         
 
         console.log(credentials)
-        const res = await fetch("http://localhost:7777/login", {
+        const res = await fetch(process.env.API_URL + "/login", {
           method: 'POST',
           body: JSON.stringify(credentials),
           headers: {
