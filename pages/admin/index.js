@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Link from 'next/link'
 import { unstable_getServerSession } from "next-auth/next"
 import { authOptions } from '../api/auth/[...nextauth]'
 import { Button } from 'primereact/button'
@@ -10,13 +11,25 @@ const Index = ({ isAdmin, userInfo }) => {
   console.log(isAdmin)
   console.log(userInfo, 'userinfo')
 
+
+  const deleteItem = () => {
+    axios.delete(`http://localhost:7777/products/${product.id}`)
+    .then(res => {
+      console.log(res.data)
+    })
+  }
+
   return (
     <div style={{height: '100vh'}}>
       {isAdmin && <>
       <h1 style={{textAlign: 'center'}}>WELCOME ADMIN</h1>
       <div style={{ display: 'flex', justifyContent: 'center'}}>
-        <Button>ADD ITEM</Button>
-        <Button>UPDATE ITEM</Button>
+        <Link href='/products/new'>
+          <Button>ADD ITEM</Button>
+        </Link>
+        <Link href='/products/update'>
+          <Button>UPDATE ITEM</Button>
+        </Link>
       </div>
       
       

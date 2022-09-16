@@ -5,18 +5,15 @@ import styles from '../styles/ProductViewTabs.module.css';
 
 import Link from 'next/link';
 import axios from 'axios';
+import ReviewForm from './ReviewForm';
+import { Button } from 'primereact/button';
 
 const ProductViewTab = ({ product }) => {
 
-
+  const [reviewShowing, setReviewShowing] = useState(false)
 
   // Admin Testing Links Will be removed 
-    const deleteItem = () => {
-      axios.delete(`http://localhost:7777/products/${product.id}`)
-      .then(res => {
-        console.log(res.data)
-      })
-    }
+    
 
 
 
@@ -95,36 +92,26 @@ const ProductViewTab = ({ product }) => {
           </TabPanel>
           <TabPanel header="Reviews">
             <div className={styles.ratingDiv}>
-              <Rating value={product.rating} readOnly stars={5} cancel={false}/>
-              <span> 5/5 Stars</span>
+              <Button label='Add Review' onClick={() => setReviewShowing(!reviewShowing)} />
             </div>
             <div className={styles.commentsDiv}>
               {/* THIS IS JUST A PLACE HOLDER FOR NOW WILL BE REWORKED LATER */}
+              {reviewShowing && <ReviewForm productId={product.id} />}
               <div className={styles.commentsInfo}>
-                <p>NAME</p>
-                <p>TITLE</p>
-                <p>STARS</p>
+                <p>Review</p>
+                <p>User</p>
+                <p>Stars</p>
               </div>
-              <div className={styles.commentsBody}>
-                BODY
+              <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}}>
+                {product?.reviews.map(rev=> (<>
+                  <h4>{rev.body}</h4>
+                  <h3>{rev.user}</h3>
+                  <Rating value={rev.stars} cancel={false} readOnly={true}/>
+                </>))}
               </div>
             </div>
           </TabPanel>
-          <TabPanel header="Q and A">
-              Q AND A
-          </TabPanel>
-          <TabPanel header="Testing Links">
-            <div>
-              <button>
-                <Link href='/products/update'>
-                Update Item
-                </Link>
-              </button><br /><br/>
-              <button onClick={deleteItem}>
-                Delete Item
-              </button>
-            </div>
-          </TabPanel>
+          
       </TabView>
     </div>
   )
