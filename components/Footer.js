@@ -12,13 +12,6 @@ const Footer = () => {
       </div>
       <div className={styles.infoDiv}>
         <ul>
-          <li>
-           <Link href='/products/new'>
-           New product ... testing route only
-           </Link> 
-          </li>
-        </ul>
-        <ul>
           <li>About</li>
           <li>Contact</li>
         </ul>
