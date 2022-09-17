@@ -48,6 +48,14 @@ const ProductsDataView = ({ products }) => {
 
   const { addProduct } = useCartStore()
 
+  const showInfo = () => {
+    cartToast.current.show({severity:'success', summary: `${prod.name} added to cart`, detail:'Message Content', life: 3000})
+  }
+  const showWarn = () => {
+    addtocartToast.current.show({severity:'warn', summary: 'Please create an account', detail:'Message Content', life: 3000});
+  }
+
+
   const handleAddCart = (prod) => {
     // havent decided what to do about the cart and user being logged in or logged out
     // I will figure this out after Mvp is finished
@@ -55,9 +63,8 @@ const ProductsDataView = ({ products }) => {
     if(session) {
       console.log(prod)
       addProduct(prod)
-      cartToast.current.show({severity:'success', summary: `${prod.name} added to cart`, detail:'Message Content', life: 3000});
+      showInfo()
     } else {
-      addtocartToast.current.show({severity:'warn', summary: 'Please create an account', detail:'Message Content', life: 3000});
     }
 
 
@@ -68,8 +75,6 @@ const ProductsDataView = ({ products }) => {
   const renderListItem = (data) => {
     return (
       <div className='col-12'>
-        <Toast ref={cartToast} />
-        <Toast ref={addtocartToast}  />
         <div className='product-list-item'>
           <Link  href={`/products/${data.id}`}>
             <img style={{cursor: 'pointer', objectFit: 'contain'}} src={data.image} alt={data.name} />
@@ -91,10 +96,10 @@ const ProductsDataView = ({ products }) => {
       </div>
     )
   }
-
+  
   const renderGridItem = (data) => {
     return (
-        <div className="col-12 md:col-4">
+      <div className="col-12 md:col-4">
             <div className="product-grid-item card">
                 <div className="product-grid-item-top">
                     <div>
@@ -121,21 +126,21 @@ const ProductsDataView = ({ products }) => {
         </div>
     );
   }
-
+  
   const itemTemplate = (product, layout) => {
     if (!product) {
-        return;
+      return;
     }
-
+    
     if (layout === 'list')
-        return renderListItem(product);
+    return renderListItem(product);
     else if (layout === 'grid')
-        return renderGridItem(product);
+    return renderGridItem(product);
   }
-
+  
   const renderHeader = () => {
     return (
-        <div className="grid grid-nogutter">
+      <div className="grid grid-nogutter">
             <div className="col-6" style={{textAlign: 'left'}}>
                 <Dropdown options={sortOptions} value={sortKey} optionLabel="label" placeholder="Sort By Price" onChange={onSortChange}/>
             </div>
@@ -145,11 +150,13 @@ const ProductsDataView = ({ products }) => {
         </div>
     );
   }
-
+  
   const header = renderHeader();
-
+  
   return (
     <div className='dataview'>
+      <Toast ref={cartToast} />
+      <Toast ref={addtocartToast}  />
       <div className="card">
         <DataView value={products} layout={layout} header={header}
           itemTemplate={itemTemplate} paginator rows={5}
