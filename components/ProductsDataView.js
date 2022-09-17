@@ -6,7 +6,7 @@ import { Rating } from 'primereact/rating';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useCartStore } from '../util/CartStore';
-import { Toast } from 'primereact/toast';
+import { Messages } from 'primereact/messages';
 
 //reactprime css
 import 'primeicons/primeicons.css';
@@ -16,9 +16,7 @@ import 'primeflex/primeflex.css';
 
 const ProductsDataView = ({ products }) => {
   console.log(products)
-  const cartToast = useRef(null)
-  const addtocartToast = useRef(null)
-
+  const msgs = useRef(null)
 
   const { data: session } = useSession()
 
@@ -30,6 +28,15 @@ const ProductsDataView = ({ products }) => {
     {label: 'Price High to Low', value: '!price'},
     {label: 'Price Low to High', value: 'price'},
   ];
+
+
+  const showMessage = () => {
+    msgs.current.show({ life: 4000, severity: 'success', summary: 'success!', detail: 'Product added to cart'})
+  }
+
+  const showMessageFail = () => {
+    msgs.current.show({ life: 4000, severity: 'error', summary: 'error,', detail: 'Please create an account first'})
+  }
 
   const onSortChange = (e) => {
     const value = e.value;
@@ -48,13 +55,6 @@ const ProductsDataView = ({ products }) => {
 
   const { addProduct } = useCartStore()
 
-  const showInfo = () => {
-    cartToast.current.show({severity:'success', summary: `${prod.name} added to cart`, detail:'Message Content', life: 3000})
-  }
-  const showWarn = () => {
-    addtocartToast.current.show({severity:'warn', summary: 'Please create an account', detail:'Message Content', life: 3000});
-  }
-
 
   const handleAddCart = (prod) => {
     // havent decided what to do about the cart and user being logged in or logged out
@@ -63,8 +63,9 @@ const ProductsDataView = ({ products }) => {
     if(session) {
       console.log(prod)
       addProduct(prod)
-      showInfo()
+      showMessage()
     } else {
+      showMessageFail()
     }
 
 
@@ -155,8 +156,7 @@ const ProductsDataView = ({ products }) => {
   
   return (
     <div className='dataview'>
-      <Toast ref={cartToast} />
-      <Toast ref={addtocartToast} position='bottom-center'/>
+      <Messages ref={msgs} />
       <div className="card">
         <DataView value={products} layout={layout} header={header}
           itemTemplate={itemTemplate} paginator rows={5}

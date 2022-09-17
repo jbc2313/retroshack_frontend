@@ -1,8 +1,16 @@
 import React from 'react'
+import Link from 'next/link'
 
-const KeyComponent = ({ prod }) => {
+
+
+const KeyComponent = ({ prod, products }) => {
+
+  const linkprod = products.filter(product => product.name === prod)
+  const linkId = linkprod.id
+
+
   return (
-    <li>{prod}</li>
+    <li><Link href={`/products/${linkId}`} >{prod}</Link></li>
   )
 }
 
