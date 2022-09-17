@@ -7,6 +7,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import ReviewForm from './ReviewForm';
 import { Button } from 'primereact/button';
+import ReviewComp from './ReviewComp';
 
 const ProductViewTab = ({ product }) => {
 
@@ -103,11 +104,7 @@ const ProductViewTab = ({ product }) => {
                 <p>Stars</p>
               </div>
               <div >
-                {product?.reviews.map((rev, index)=> (<div key={index} style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}} >
-                  <h4>{rev.body}</h4>
-                  <h3>{rev.user}</h3>
-                  <Rating  value={rev.stars} cancel={false} readOnly={true}/>
-                </div>))}
+                {product?.reviews.map((rev, index)=> <ReviewComp key={index} rev={rev} />)}
               </div>
             </div>
           </TabPanel>
