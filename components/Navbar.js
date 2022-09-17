@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { InputText } from 'primereact/inputtext'
 import styles from '../styles/Navbar.module.css'
 import Link from 'next/link'
@@ -17,6 +17,7 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
+import axios from 'axios'
 
 const Navbar = () => {
   const [searchValue, setSearchValue] = useState('')
@@ -25,7 +26,7 @@ const Navbar = () => {
   const op = useRef(null);
   const searchPanel = useRef(null);
   const cartProducts = useCartStore((state) => state.products)
-  
+  const [render, setRender] = useState(0)
 
 
   const imageBody = (rowData) => {
@@ -43,9 +44,22 @@ const Navbar = () => {
   const { products, getProducts } = useProductStore();
 
   const searchForItem = () => {
-    getProducts()
+    //getProducts()
 
   }
+
+  const fetchData = async () => {
+    const { data } = await axios.get(NEXT_PUBLIC_API_URL + '/products')
+    getProducts(data);
+  }
+
+  useEffect(() => {
+    setRender(render+1)
+    if(render < 2){
+      fetchData()
+    }
+  })
+
   const displaySearch = () => {
     setIsSearchShowing(true)
   }
