@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
@@ -6,6 +6,7 @@ import { Rating } from 'primereact/rating';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useCartStore } from '../util/CartStore';
+import { Toast } from 'primereact/toast';
 
 //reactprime css
 import 'primeicons/primeicons.css';
@@ -15,6 +16,9 @@ import 'primeflex/primeflex.css';
 
 const ProductsDataView = ({ products }) => {
   console.log(products)
+  const cartToast = useRef(null)
+  const addtocartToast = useRef(null)
+
 
   const { data: session } = useSession()
 
@@ -51,8 +55,9 @@ const ProductsDataView = ({ products }) => {
     if(session) {
       console.log(prod)
       addProduct(prod)
+      cartToast.current.show({severity:'success', summary: `${prod.name} added to cart`, detail:'Message Content', life: 3000});
     } else {
-      
+      addtocartToast.current.show({severity:'warn', summary: 'Please create an account', detail:'Message Content', life: 3000});
     }
 
 
@@ -63,6 +68,8 @@ const ProductsDataView = ({ products }) => {
   const renderListItem = (data) => {
     return (
       <div className='col-12'>
+        <Toast ref={cartToast} />
+        <Toast ref={addtocartToast}  />
         <div className='product-list-item'>
           <Link  href={`/products/${data.id}`}>
             <img style={{cursor: 'pointer', objectFit: 'contain'}} src={data.image} alt={data.name} />
