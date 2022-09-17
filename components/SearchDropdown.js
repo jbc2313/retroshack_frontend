@@ -1,5 +1,6 @@
 import React from 'react'
 import { useProductStore } from '../util/ProductStore'
+import KeyComponent from './KeyComponent';
 
 const SearchDropdown = ({ searchValue }) => {
 
@@ -19,17 +20,12 @@ const SearchDropdown = ({ searchValue }) => {
       return prod
     }
   })
-
-  listItems = filterList.map((prod, index) => 
-    <li key={index}>
-      {prod}
-    </li>
-  );
+  
 
   return (
     <div>
       <ul style={{display: 'flex', flexDirection: 'column'}}>
-        {listItems}
+      {filterList.map((prod, index) => <KeyComponent prod={prod} key={index}/>)}
       </ul>
     </div>
   )
