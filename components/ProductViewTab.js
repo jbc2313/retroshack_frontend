@@ -103,7 +103,7 @@ const ProductViewTab = ({ product }) => {
                 <p>Stars</p>
               </div>
               <div >
-                {product?.reviews.map((rev, index)=> (<div key={index} style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}} >
+                {product?.reviews.map((rev, index)=> (<div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}} >
                   <h4>{rev.body}</h4>
                   <h3>{rev.user}</h3>
                   <Rating  value={rev.stars} cancel={false} readOnly={true}/>
