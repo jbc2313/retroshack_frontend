@@ -156,7 +156,7 @@ const ProductsDataView = ({ products }) => {
   return (
     <div className='dataview'>
       <Toast ref={cartToast} />
-      <Toast ref={addtocartToast}  />
+      <Toast ref={addtocartToast} position='bottom-center'/>
       <div className="card">
         <DataView value={products} layout={layout} header={header}
           itemTemplate={itemTemplate} paginator rows={5}
