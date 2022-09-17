@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useCartStore } from '../util/CartStore';
 import { Messages } from 'primereact/messages';
+import { Toast } from 'primereact/toast';
+ 
 
 //reactprime css
 import 'primeicons/primeicons.css';
@@ -156,7 +158,7 @@ const ProductsDataView = ({ products }) => {
   
   return (
     <div className='dataview'>
-      <Messages ref={msgs} />
+      <Toast ref={msgs} />
       <div className="card">
         <DataView value={products} layout={layout} header={header}
           itemTemplate={itemTemplate} paginator rows={5}

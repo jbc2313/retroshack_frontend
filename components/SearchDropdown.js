@@ -6,17 +6,11 @@ const SearchDropdown = ({ searchValue }) => {
 
   const { products } = useProductStore();
   const prodList = products.map(prod => {
-    return prod.name
+    return {name: prod.name, id: prod.id}
   })
-  const prodIdList = products.map(prod => {
-    return {
-      id: prod.id,
-      name: prod.name
-    }
-  })
-  console.log(prodIdList)
+ 
   const filterList = prodList.filter(prod => {
-    if(prod.toLowerCase().includes(searchValue.toLowerCase())){
+    if(prod.name.toLowerCase().includes(searchValue.toLowerCase())){
       return prod
     }
   })

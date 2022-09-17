@@ -3,14 +3,12 @@ import Link from 'next/link'
 
 
 
-const KeyComponent = ({ prod, products }) => {
+const KeyComponent = ({ prod }) => {
 
-  const linkprod = products.filter(product => product.name === prod)
-  const linkId = linkprod.id
 
 
   return (
-    <li><Link href={`/products/${linkId}`} >{prod}</Link></li>
+    <li><Link href={`/products/${prod.id}`} >{prod.name}</Link></li>
   )
 }
 
