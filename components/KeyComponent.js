@@ -5,10 +5,10 @@ import Link from 'next/link'
 
 const KeyComponent = ({ prod }) => {
 
-
+  console.log('product from dropdown list => ', prod)
 
   return (
-    <li><Link href={`/products/${prod.id}`} >{prod.name}</Link></li>
+    <li >{prod.name}</li>
   )
 }
 

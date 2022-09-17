@@ -102,12 +102,12 @@ const ProductViewTab = ({ product }) => {
                 <p>User</p>
                 <p>Stars</p>
               </div>
-              <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}}>
-                {product?.reviews.map(rev=> (<>
+              <div >
+                {product?.reviews.map((rev, index)=> (<div key={index} style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}} >
                   <h4>{rev.body}</h4>
                   <h3>{rev.user}</h3>
-                  <Rating value={rev.stars} cancel={false} readOnly={true}/>
-                </>))}
+                  <Rating  value={rev.stars} cancel={false} readOnly={true}/>
+                </div>))}
               </div>
             </div>
           </TabPanel>
