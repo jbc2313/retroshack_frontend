@@ -1,7 +1,7 @@
 import React from 'react'
 import { useProductStore } from '../util/ProductStore'
 import KeyComponent from './KeyComponent';
-import Link from 'next/link';
+
 
 const SearchDropdown = ({ searchValue }) => {
 
@@ -19,7 +19,7 @@ const SearchDropdown = ({ searchValue }) => {
 
   return (
       <ul style={{position: 'inherit', top: '0', left: '0',display: 'flex', flexDirection: 'column', alignItems: 'start', alignContent: 'start', listStyle: 'none'}}>
-      {filterList.map((prod, index) => <Link href={`/products/${prod.id}`}><a><KeyComponent prod={prod} /></a></Link>)}
+      {filterList.map((prod, index) => <KeyComponent prod={prod} key={index} />)}
       </ul>
   )
 }

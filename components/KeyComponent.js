@@ -8,7 +8,7 @@ const KeyComponent = ({ prod }) => {
   console.log('product from dropdown list => ', prod)
 
   return (
-    <li >{prod.name}</li>
+    <li ><Link href={`/products/${prod.id}`}>{prod.name}</Link></li>
   )
 }
 
