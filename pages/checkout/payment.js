@@ -9,7 +9,7 @@ import ConfirmationTab from '../../components/ConfirmationTab';
 import styles from '../../styles/PaymentInfo.module.css';
 
 
-const payment = () => {
+const Payment = () => {
 
   const [activeTab, setActiveTab] = useState(1)
   const [inputComplete, setInputComplete] = useState(false)
@@ -65,4 +65,4 @@ const payment = () => {
   )
 }
 
-export default payment
+export default Payment

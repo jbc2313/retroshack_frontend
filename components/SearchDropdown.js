@@ -23,7 +23,7 @@ const SearchDropdown = ({ searchValue }) => {
   return (
     <div>
       <ul style={{display: 'flex', flexDirection: 'column'}}>
-      {filterList.map(prod => <li>{prod}</li>)}
+      {filterList.map((prod, index) => <li key={index}>{prod}</li>)}
       </ul>
     </div>
   )

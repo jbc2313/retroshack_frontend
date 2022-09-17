@@ -59,7 +59,7 @@ const Login = () => {
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }}></i>
                     <h5>Registration Successful!</h5>
                     <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-                        Your account is registered under name <b>{formData.name}</b> ; it'll be valid next 30 days without activation. Please check <b>{formData.email}</b> for activation instructions.
+                        Your account is registered under name <b>{formData.name}</b> it'll be valid next 30 days without activation. Please check <b>{formData.email}</b> for activation instructions.
                     </p>
                 </div>
       </Dialog>
@@ -83,7 +83,7 @@ const Login = () => {
               {getFormErrorMessage('password')}
             </div>
             <div>
-              <a href='/signup'><h5 className='text-right'>_Create Account?_ </h5></a>
+              <Link href='/signup'><h5 className='text-right'>_Create Account?_ </h5></Link>
             </div>
             <Button type='submit' label='Submit' className='mt-2' />
 

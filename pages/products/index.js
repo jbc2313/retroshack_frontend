@@ -5,7 +5,7 @@ import styles from '../../styles/ProductsIndex.module.css'
 
 // this is the index page for all products
 
-const index = ({ products }) => {
+const Index = ({ products }) => {
   
 
   return (
@@ -16,7 +16,7 @@ const index = ({ products }) => {
   )
 }
 
-export default index
+export default Index
 
 export async function getServerSideProps(context) {
   const { data } = await axios.get(process.env.API_URL + '/products')

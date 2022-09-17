@@ -32,7 +32,7 @@ const ProductViewTab = ({ product }) => {
           <TabPanel header="Specs">
           <table>
               <tr>
-                <td align='right'>
+                <td>
                   <b>Name:</b>
                 </td>
                 <td>
@@ -40,7 +40,7 @@ const ProductViewTab = ({ product }) => {
                 </td>
               </tr>
               <tr>
-                <td align='right'>
+                <td>
                   <b>Category:</b>
                 </td>
                 <td>
@@ -48,7 +48,7 @@ const ProductViewTab = ({ product }) => {
                 </td>
               </tr>
               <tr>
-                <td align='right'>
+                <td>
                   <b>SKU:</b>
                 </td>
                 <td>
@@ -56,7 +56,7 @@ const ProductViewTab = ({ product }) => {
                 </td>
               </tr>
               <tr>
-                <td align='right'>
+                <td>
                   <b>ID:</b>
                 </td>
                 <td>
@@ -64,7 +64,7 @@ const ProductViewTab = ({ product }) => {
                 </td>
               </tr>
               <tr>
-                <td align='right'>
+                <td>
                   <b>Stock Status:</b>
                 </td>
                 <td>
@@ -72,7 +72,7 @@ const ProductViewTab = ({ product }) => {
                 </td>
               </tr>
               <tr>
-                <td align='right'>
+                <td>
                   <b>Quanity:</b>
                 </td>
                 <td>
@@ -80,7 +80,7 @@ const ProductViewTab = ({ product }) => {
                 </td>
               </tr>
               <tr>
-                <td align='right'>
+                <td>
                   <b>Price:</b>
                 </td>
                 <td>
