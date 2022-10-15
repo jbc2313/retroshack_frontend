@@ -21,10 +21,12 @@ const SignUpForm = () => {
   const router = useRouter()
   const [showMessage, setShowMessage] = useState(false)
   const [formData, setFormData] = useState({})
+  const [resData, setResData] = useState({})
   const defaultValues = {
     email: '',
     password: ''
   }
+
 
   const { control, formState: { errors }, handleSubmit, reset } = useForm({ defaultValues });
 
@@ -38,6 +40,8 @@ const SignUpForm = () => {
     })
     .then(res => {
       console.log('Axios response', res.data)
+      setResData(res.data.link)
+      
       // need to add error handling incase user signup doesnt work or user is already signed up.
       setShowMessage(true);
     })
@@ -61,7 +65,10 @@ const SignUpForm = () => {
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }}></i>
                     <h5>Registration Successful!</h5>
                     <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-                        Your account is registered under email <b>{formData.email}</b>. 
+                        Follow this link to see temp email sent from server. 
+                    </p>
+                    <p style={{textAlign: 'center'}}>
+                        <a href={resData} target="_blank" ><u>Email Link</u></a>
                     </p>
                 </div>
       </Dialog>
