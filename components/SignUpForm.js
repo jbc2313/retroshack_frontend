@@ -68,7 +68,7 @@ const SignUpForm = () => {
                         Follow this link to see temp email sent from server. 
                     </p>
                     <p style={{textAlign: 'center'}}>
-                        <a href={resData} target="_blank" ><u>Email Link</u></a>
+                        <a href={resData} target="_blank" rel="noreferrer" ><u>Email Link</u></a>
                     </p>
                 </div>
       </Dialog>
